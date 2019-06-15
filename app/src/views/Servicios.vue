@@ -1,18 +1,18 @@
 <template>
-<div>
+  <div>
     <h1>nueva ruta</h1>
-    <componente />
-    </div>
+    <componente/>
+  </div>
 </template>
 
 <script>
-  import Componente from '../components/Componente'
+import Componente from "../components/Componente";
 
-  export default {
-    components: {
-      Componente
-    }
+export default {
+  components: {
+    Componente
   }
+};
 </script>
 <style>
 
