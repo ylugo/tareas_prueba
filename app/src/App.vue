@@ -1,45 +1,56 @@
-<template >
-  <v-toolbar>
-    <v-toolbar-side-icon></v-toolbar-side-icon>
-    <v-toolbar-title>Title</v-toolbar-title>
-    <v-btn class="success">ingreso</v-btn>
-    <v-spacer></v-spacer>
-    <v-toolbar-items class="hidden-sm-and-down">
-      <v-btn flat>Link One</v-btn>
-      <v-btn flat>Link Two</v-btn>
-      <v-btn flat>Link Three</v-btn>
-    </v-toolbar-items>
-  </v-toolbar>
+<template>
+  <v-app>
+    <v-toolbar app class="info" xs12>
+      <v-toolbar-side-icon @click="drawer = !drawer"></v-toolbar-side-icon>
+      <v-toolbar-title>Title</v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-btn class="success">ingreso</v-btn>
+      <v-btn class="error">salir</v-btn>
+    </v-toolbar>
+    <v-navigation-drawer app v-model="drawer" temporary dark>
+      <v-layout mt-4 column align-center>
+        <v-flex>
+          <v-avatar>
+            <img src="https://avatars0.githubusercontent.com/u/9064066?v=4&s=460" alt="">
+          </v-avatar>
+        </v-flex>
+        <v-flex mt-2>
+          <p class="white--text headline">pepito perez</p>
+        </v-flex>
+      </v-layout>
+      <v-layout column>
+        <v-flex mx-3>
+          <v-btn color="success" block :to="{name: 'Tareas'}">Home</v-btn>
+          <v-btn color="success" block>Lista de tareas</v-btn>
+        </v-flex>
+      </v-layout>
+    </v-navigation-drawer>
+
+    <tareas/>
+  </v-app>
 </template>
 
 <script>
-import Firebase from 'firebase';
-let config = {
-  apiKey: "AIzaSyAHyFJM5_llntGiU302oJKIsF3wv-ooOD8",
-    authDomain: "tareas-935a9.firebaseapp.com",
-    databaseURL: "https://tareas-935a9.firebaseio.com",
-    projectId: "tareas-935a9",
-    storageBucket: "tareas-935a9.appspot.com",
-    messagingSenderId: "161731479883",
-    appId: "1:161731479883:web:51039f241d0179d5"
-   
-
-};
- let app = firebase.initializeApp(config);
- let db = app.database();
-
+import Tareas from "./components/Tareas.vue";
+import Componente from "./components/Componente.vue";
 export default {
   name: "App",
+  /*components: {
+    Tareas,
+    Componente,*/
   data() {
     return {
-      title: "probando"
-      //
-    };
-  }
-};
+      drawer: true
+    }
+  },
+  components: {
+  Tareas, Componente
+}
+}
+
+
+
 </script>
+
 <style>
-
-
 </style>
-
