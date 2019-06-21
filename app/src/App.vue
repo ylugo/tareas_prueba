@@ -2,16 +2,16 @@
   <v-app>
     <v-toolbar app class="info" xs12>
       <v-toolbar-side-icon @click="drawer = !drawer"></v-toolbar-side-icon>
-      <v-toolbar-title>Title</v-toolbar-title>
+      <v-toolbar-title>TAREAS</v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn class="success">ingreso</v-btn>
+      
       <v-btn class="error">salir</v-btn>
     </v-toolbar>
     <v-navigation-drawer app v-model="drawer" temporary dark>
       <v-layout mt-4 column align-center>
         <v-flex>
-          <v-avatar>
-            <img src="https://avatars0.githubusercontent.com/u/9064066?v=4&s=460" alt="">
+          <v-avatar size=100>
+            <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt>
           </v-avatar>
         </v-flex>
         <v-flex mt-2>
@@ -35,21 +35,17 @@ import Tareas from "./components/Tareas.vue";
 import Componente from "./components/Componente.vue";
 export default {
   name: "App",
-  /*components: {
-    Tareas,
-    Componente,*/
+
   data() {
     return {
-      drawer: true
-    }
+      drawer: false
+    };
   },
   components: {
-  Tareas, Componente
-}
-}
-
-
-
+    Tareas,
+    Componente
+  }
+};
 </script>
 
 <style>
