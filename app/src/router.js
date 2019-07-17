@@ -1,26 +1,54 @@
 import Vue from 'vue'
+import firebase from 'firebase'
 import Router from 'vue-router'
+import Login from './views/Login.vue'
+import SignUp from './views/SignUp.vue'
 import Home from './views/Home.vue'
+import Servicios from './views/Servicios.vue'
 
-Vue.use(Router)
+Vue.use(Router);
 
-export default new Router({
+const router = new Router({
   routes: [
     {
+      path: '*',
+      redirect: '/Login',
+     
+    },
+    {
       path: '/',
-      name: 'home',
-      component: Home
+      redirect: 'Login',
+      
     },
-   
+    
     {
-    path: '/servicios',
-      name: 'servicios',
-      component: () => import(/* webpackChunkName: "about" */ './views/Servicios.vue')
+      path: '/login',
+      name: 'Login',
+      component: Login
     },
     {
-    path: '/componente',
-      name: 'componente',
-      component: () => import(/* webpackChunkName: "about" */ './components/Componente.vue')
+      path: '/signUp',
+      name: 'SignUp',
+      component: SignUp
+    },
+    {
+      path: '/servicios',
+      name: 'Servicios',
+      component: Servicios,
+      meta:{
+        requiresAuth: true
+      }
     }
+
   ]
-})
+});
+router.beforeEach((to, from, next) => {
+  const currentUser = firebase.auth().currentUser;
+  const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
+
+  if (requiresAuth && !currentUser) next('login');
+  else if (!requiresAuth && currentUser) next();
+  else next();
+});
+
+export default router;

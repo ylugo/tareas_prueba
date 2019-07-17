@@ -1,18 +1,9 @@
 <template>
   <v-container class="mt-5 grid-list-xl">
     <v-layout row wrap>
-      <v-flex md6>
-        <v-card class="mb-3" v-for="(item, index) in listaTareas" :key="index">
-          <v-card-text>
-            {{item.titulo}}
-            <p>{{item.descripcion}}</p>
-            <v-btn @click="editar(index)" color="warning" class="ml-0">Editar</v-btn>
-            <v-btn @click="eliminarTarea(item.id)"  color="error" >Eliminar</v-btn>
-          </v-card-text>
-        </v-card>
-      </v-flex>
-      <v-flex md6 v-if="formAgregar">
-        <v-card class="mb-3 pa-3">
+      
+      <v-flex  xs12 md6 v-if="formAgregar">
+        <v-card class="mb-3 pa-3" color="transparent">
           <v-form @submit.prevent="agregarTarea">
             <v-text-field label="Titulo de tarea" v-model="titulo"></v-text-field>
             <v-textarea label="Desacripcion de tarea" v-model="descripcion"></v-textarea>
@@ -27,6 +18,16 @@
             <v-textarea label="Desacripcion de tarea" v-model="descripcion"></v-textarea>
             <v-btn block color="warning" type="submit">Editar</v-btn>
           </v-form>
+        </v-card>
+      </v-flex>
+      <v-flex md6>
+        <v-card class="mb-3" v-for="(item, index) in listaTareas" :key="index">
+          <v-card-text>
+            {{item.titulo}}
+            <p>{{item.descripcion}}</p>
+            <v-btn @click="editar(index)" color="warning" class="ml-0">Editar</v-btn>
+            <v-btn @click="eliminarTarea(item.id)"  color="error" >Eliminar</v-btn>
+          </v-card-text>
         </v-card>
       </v-flex>
     </v-layout>
@@ -53,12 +54,8 @@ export default {
           id: 1,
           titulo: "Titulo Tarea #1",
           descripcion: "Lorem ipsum dolor sit amet elit. Magnam nemo beatae "
-        },
-        {
-          id: 2,
-          titulo: "Titulo Tarea #2",
-          descripcion: "Lorem ipsum dolor sit amet elit. Magnam nemo beatae "
         }
+        
       ],
       titulo:"",
       descripcion:"",
