@@ -32,6 +32,11 @@ const router = new Router({
       component: SignUp
     },
     {
+      path: '/home',
+      name: 'Home',
+      component: Home
+    },
+    {
       path: '/servicios',
       name: 'Servicios',
       component: Servicios,

@@ -5,8 +5,8 @@
       <v-flex  xs12 md6 v-if="formAgregar">
         <v-card class="mb-3 pa-3" color="transparent">
           <v-form @submit.prevent="agregarTarea">
-            <v-text-field label="Titulo de tarea" v-model="titulo"></v-text-field>
-            <v-textarea label="Desacripcion de tarea" v-model="descripcion"></v-textarea>
+            <v-text-field color="teal lighten-2" label="Titulo de tarea" v-model="titulo"></v-text-field>
+            <v-textarea color="teal lighten-2" label="Desacripcion de tarea" v-model="descripcion"></v-textarea>
             <v-btn block color="success" type="submit">agregar tarea</v-btn>
           </v-form>
         </v-card>
@@ -67,7 +67,7 @@ export default {
   },
   methods: {
     agregarTarea() {
-      console.log(this.titulo, this.descripcion);
+      
       if(this.titulo === '' || this.descripcion === ''){
          this.snackbar = true
          this.mensaje = "Llena todos los campos!"

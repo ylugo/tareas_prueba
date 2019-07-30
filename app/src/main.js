@@ -10,8 +10,10 @@ import 'material-design-icons-iconfont/dist/material-design-icons.css'
 
 
 Vue.config.productionTip = false
+
 let app = '';
-firebase.initializeApp ({
+
+var firebaseConfig = {
   apiKey: "AIzaSyDvSwn4x-G93nFqYkb8bQesy8Hh8YOY0JY",
   authDomain: "bdtareas-5fc8f.firebaseapp.com",
   databaseURL: "https://bdtareas-5fc8f.firebaseio.com",
@@ -20,8 +22,8 @@ firebase.initializeApp ({
   messagingSenderId: "699806958166",
   appId: "1:699806958166:web:1d55366296e21b95"
 
-});
-
+};
+ firebase.initializeApp(firebaseConfig);
 firebase.auth().onAuthStateChanged(() => {
   if (!app) {
     /* eslint-disable no-new */

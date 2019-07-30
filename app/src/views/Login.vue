@@ -15,11 +15,16 @@
                   </v-avatar>
                 </v-layout>
                 <v-form>
-                  <v-text-field color="teal lighten-2" v-model="email" prepend-icon="person"  label="Login" type="text"></v-text-field>
-                  <v-text-field color="teal lighten-2" v-model="password"
-                    id="password"
+                  <v-text-field
+                    color="teal lighten-2"
+                    v-model="email"
+                    prepend-icon="person"
+                    label="Login"
+                  ></v-text-field>
+                  <v-text-field
+                    color="teal lighten-2"
+                    v-model="password"
                     prepend-icon="lock"
-                    name="password"
                     label="Password"
                     type="password"
                   ></v-text-field>
@@ -38,32 +43,32 @@
 </template>
 
 <script>
-import firebase from 'firebase';
-  export default {
-    name: 'login',
-    data() {
-      return {
-        email: '',
-        password: ''
-      }
-    },
-    methods: {
-      login: function() {
-        firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(
-          (user) => {
-            this.$router.replace('servicios')
+import firebase from "firebase";
+export default {
+  name: "login",
+  data() {
+    return {
+      email: "",
+      password: ""
+    };
+  },
+  methods: {
+    login: function() {
+      firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(
+          user => {
+            this.$router.replace("servicios");
           },
           function(err) {
-            alert('Oops. ' + err.message)
+            alert("Oops. " + err.message);
           }
         );
-      }
     }
   }
+};
 </script>
 <style scoped>
 .fondo {
-  background-image: url("../assets/fondo3.jpg");
+  background-image: url("../assets/fondo1.png");
   background-size: cover;
   background-position: top center;
 }
